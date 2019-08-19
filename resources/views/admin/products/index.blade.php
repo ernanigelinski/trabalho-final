@@ -9,7 +9,7 @@
             <br>
             <br>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('admin.products.create') }}"> Create New Product</a>
             </div>
             <br>
             <br>
@@ -38,11 +38,11 @@
             <td>{{ $product->category->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('admin.products.destroy',$product->id) }}" method="POST">
    
-                    <a class="btn btn-success" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-success" href="{{ route('admin.products.show',$product->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('admin.products.edit',$product->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')

@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\HasApiTokens;
 
 class Product extends Model
 {
+    use HasApiTokens;
+    
     protected $fillable = [
         'name', 'detail', 'price', 'category_id'
     ];

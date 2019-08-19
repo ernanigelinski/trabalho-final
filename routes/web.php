@@ -14,12 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('products','ProductController');
-Route::resource('categories','CategoryController');
 Auth::routes();
+
+Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+    Route::resource('products','ProductController');
+    Route::resource('categories','CategoryController');
+});
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+

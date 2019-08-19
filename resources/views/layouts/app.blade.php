@@ -35,8 +35,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ url('/products')}}">Products</a>
-                        <a class="nav-link" href="{{ url('/categories')}}">Category</a>
+                        <a class="nav-link" href="{{ url('/admin/products')}}">Products</a>
+                        <a class="nav-link" href="{{ url('/admin/categories')}}">Category</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

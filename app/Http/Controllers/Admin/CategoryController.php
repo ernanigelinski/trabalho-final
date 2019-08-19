@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Category::latest()->paginate(5);
   
-        return view('categories.index',compact('categories'))
+        return view('admin.categories.index',compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -27,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
   
     /**
@@ -44,7 +45,7 @@ class CategoryController extends Controller
   
         Category::create($request->all());
    
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('success','Category created successfully.');
     }
    
@@ -56,7 +57,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show',compact('category'));
+        return view('admin.categories.show',compact('category'));
     }
    
     /**
@@ -67,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit',compact('category'));
+        return view('admin.categories.edit',compact('category'));
     }
   
     /**
@@ -85,7 +86,7 @@ class CategoryController extends Controller
   
         $category->update($request->all());
   
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('success','Category updated successfully');
     }
   
@@ -99,7 +100,7 @@ class CategoryController extends Controller
     {
         $category->delete();
   
-        return redirect()->route('categories.index')
+        return redirect()->route('admin.categories.index')
                         ->with('success','Category deleted successfully');
     }
 }

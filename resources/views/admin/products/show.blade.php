@@ -9,7 +9,7 @@
             </div>
             <br>  
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('admin.products.index') }}"> Back</a>
             </div>
         </div>
     </div>

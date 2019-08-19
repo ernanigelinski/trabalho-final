@@ -1,10 +1,13 @@
 <?php
   
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
   
-use App\Product;
-use App\Category;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductCollection;
   
 class ProductController extends Controller
 {
@@ -17,7 +20,7 @@ class ProductController extends Controller
     {
         $products = Product::latest()->paginate(5);
         $categories = Category::all();
-        return view('products.index',compact('products', 'categories'))
+        return view('admin.products.index',compact('products', 'categories'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -29,7 +32,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        return view('admin.products.create', compact('categories'));
     }
   
     /**
@@ -49,7 +52,7 @@ class ProductController extends Controller
         $categories = Category::all();
         Product::create($request->all());
         
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success','Product created successfully.');
     }
    
@@ -61,7 +64,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        return view('admin.products.show',compact('product'));
     }
    
     /**
@@ -72,7 +75,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        return view('admin.products.edit',compact('product'));
     }
   
     /**
@@ -93,7 +96,7 @@ class ProductController extends Controller
   
         $product->update($request->all());
   
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success','Product updated successfully');
     }
   
@@ -107,7 +110,7 @@ class ProductController extends Controller
     {
         $product->delete();
   
-        return redirect()->route('products.index')
+        return redirect()->route('admin.products.index')
                         ->with('success','Product deleted successfully');
     }
 }
